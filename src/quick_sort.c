@@ -12,34 +12,38 @@
 
 #include "../inc/push_swap.h"
 
-void swap(int* a, int* b)
+static void swap(int* a, int* b)
 {
-    int t;
-    
-    t = *a;
+    int t = *a;
     *a = *b;
     *b = t;
 }
-
-void quick_sort(int *array, int low, int high)
+static int sort_call(int *arr, int low, int high)
 {
-    int *pivot;
+    int pivot;
     int i;
-    int j;
-
-    i = -1;
-    j = 0;
-
-    pivot = &array[high];
-    while (i < high - 1)
+    
+    pivot = arr[high];
+    i = (low - 1);
+    while (low < high)
     {
-        if (array[j] < pivot)
+        if (arr[low] < pivot)
         {
             i++;
-            swap(&array[i], &array[j]);
+            if (i != low)
+              swap(&arr[i], &arr[low]);
         }
-        j++;
+        low++;
     }
-    swap(&array[i + 1], &pivot);
-
+    swap(&arr[i + 1], &arr[high]);
+    return (i + 1);
+}
+void quicksort(int *arr, int low, int high)
+{
+    int part;
+    if (low >= high)
+     return ;
+    part = sort_call(arr, low, high);
+    quicksort(arr, low, part - 1);
+    quicksort(arr, part + 1, high);
 }

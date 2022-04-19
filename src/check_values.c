@@ -13,13 +13,13 @@
 #include "../inc/push_swap.h"
 
 
-int char_set(char c)
+static int char_set(char c)
 {
-    if ( c <= '9' && c => '0' || c == '-' || c == '+')
+    if ( (c <= '9' && c >= '0') || c == '-' || c == '+')
         return (1);
     return (0);
 }
-int is_included(char    **av)
+static int is_included(char    **av)
 {
     int i;
     int j;
@@ -40,27 +40,30 @@ int is_included(char    **av)
     return (1);
 }
 
-int char_set_pos(char   *num)
+static int char_set_pos(char   *num)
 {
     int i;
     int exist;
+    int len;
 
     i = 0;
     exist = 0;
+    len = ft_strlen(num);
     while (num[i])
     {
         if (num[i] == '+' || num[i] == '-')
             exist++;
         i++;
     }
-    if (exist > 1)
-        return (0);
-    if (exist == 1 && (num[0] != '-' || num[0] != '+'))
-        return (0);
-    return (1);
+    if ((exist == 1 && num[0] == '-' && len != 1) || (exist == 1 && num[0] == '+' && len != 1) || exist == 0)
+        {
+            return (1);
+        }
+        else
+            return (0);
 }
 
-int is_right(char   **av)
+static int is_right(char   **av)
 {
     int i;
     int j;

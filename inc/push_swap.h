@@ -1,20 +1,12 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <stdio.h>
 #include <stdlib.h>
+#include "../libft/libft.h"
+#include "../ft_printf/ft_printf.h"
 
-typedef struct s_stack
-{
-    struct s_stack *previous;
-    int num;
-    struct  s_stack *next;
-}   t_stack;
-
-typedef struct s_head
-{
-    t_stack *a_head;
-    t_stack *b_head;
-} t_head;
+int check_values(char   **av);
+int *get_values(char    **av, int len);
+void quicksort(int *arr, int low, int high);
 
 #endif

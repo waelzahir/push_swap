@@ -1,25 +1,48 @@
-M_NAME = push_swap
-B_NAME = checker
+NAME = push_swap
+NAME_BONUS = checker
+MAIN = main.c
+FLAGS = -Wall -Wextra -Werror
+CC = gcc
 
-
-M_MAIN = main.c
-B_NAME = main_bonus.c
-
-
+PRINT_DIR = ft_printf
+LIB_DIR = libft
 SRC_DIR = src
 OBJ_DIR = obj
-LIB_DIR = libft
+
+HEADER = inc/push_swap.h
+LIBFT = ${LIB_DIR}/libft.a
+PRINTF = ${PRINT_DIR}/libftprintf.a
 
 
-M_HEADER = $(HEADER_DIR)/push_swap.h
-B_HEADER = $(HEADER_DIR)/push_swap_bonus.h
+FILES = check_values.c get_values.c quick_sort.c
+SRC = $(addprefix $(SRC_DIR)/, $(FILES))
+OBJ = $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
 
-libft = $(LIB_DIR)/libft.a
 
-FLAGS = -Wall -Wextra -Werror
 
-M_SRC = $(SRC_DIR)/parsing.c
-s
-s
-$(libft): 
-	make -c libft/
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	${CC} ${FLAGS} -c $< -o $@
+
+
+all: ${NAME}
+
+${LIBFT}:
+	make -C libft/
+$(PRINTF):
+	make -C ft_printf/
+
+
+${NAME}: ${PRINTF} ${LIBFT} $(OBJ) ${MAIN} $(HEADER)
+	${CC} ${FLAGS} ${MAIN} ${OBJ} ${LIBFT} ${PRINTF} -o ${NAME}
+
+clean:
+	@rm -rf ${OBJ}
+	make clean -C libft/
+	make clean -C ft_printf
+fclean:
+	@rm -rf ${OBJ} ${NAME}
+	make fclean -C libft/
+	make fclean -C ft_printf
+
+re: fclean all
+.phony: all clean fclean re
