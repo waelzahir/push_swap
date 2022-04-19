@@ -14,7 +14,7 @@ LIBFT = ${LIB_DIR}/libft.a
 PRINTF = ${PRINT_DIR}/libftprintf.a
 
 
-FILES = check_values.c get_values.c quick_sort.c
+FILES = check_values.c get_values.c quick_sort.c stack_pt1.c
 SRC = $(addprefix $(SRC_DIR)/, $(FILES))
 OBJ = $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
 

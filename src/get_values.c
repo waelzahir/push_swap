@@ -12,7 +12,7 @@
 
 #include "../inc/push_swap.h"
 
-static void check_dup(int *array, int len)
+int *check_dup(int *array, int len)
 {
     int i;
     int j;
@@ -21,18 +21,17 @@ static void check_dup(int *array, int len)
     j = 0;
     while (i <= len)
     {
-        ft_printf(" comp %d, %d\n", array[i], array[j]);
         if (array[i] == array[j])
         {
+            ft_printf("Error\n");
             ft_bzero(array, (len + 1) * 4);
             free(array);
-            array = NULL;
-            ft_printf("Error\n");
-            return ;
+            return (NULL);
         }
         j++;
         i++;
     }
+    return (array);
 }
 
 int *get_values(char    **av, int len)
@@ -50,6 +49,6 @@ int *get_values(char    **av, int len)
         i++;
     }
     quicksort(array, 0 ,  i - 1);
-    check_dup(array, i -1);
+    array = check_dup(&array[0], i -1);
     return (array);
 }

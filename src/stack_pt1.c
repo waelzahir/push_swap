@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   stack_pt1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ozahir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/17 23:29:20 by ozahir            #+#    #+#             */
-/*   Updated: 2022/04/17 23:29:21 by ozahir           ###   ########.fr       */
+/*   Created: 2022/04/19 01:45:05 by ozahir            #+#    #+#             */
+/*   Updated: 2022/04/19 01:45:08 by ozahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/push_swap.h"
-void print_array(int *array,int len)
+
+#include "../inc/push_swap.h"
+
+t_node *array_to_list(char  **av)
 {
+    t_node *node;
+    t_node *mem;
     int i;
 
     i = 0;
-    while (i < len)
+    node = malloc(sizeof(t_node));
+    mem = node;
+    if (!node)
+        return (NULL);
+    while (av[i])
     {
-        ft_printf("%d\n", array[i]);
+        node->num = ft_atoi(av[i]);
+        ft_printf("%d\n", node->num);
+        node->uni_next = malloc(sizeof(t_node));
+        node = node->uni_next;
         i++;
     }
-}
-
-int main (int ac, char  **av)
-{
-    int *array;
-    t_node  *univ;
-
-    if (ac >= 2)
-    {
-        if (check_values(av + 1) == 0)
-            return (0);
-        array = get_values(av + 1, ac - 1);
-      if (array == NULL)
-            return (0);
-    univ = array_to_list(av + 1);
-    print_array(array, ac -1);
-    }
+    return (mem);
 }
