@@ -1,7 +1,7 @@
 NAME = push_swap
 NAME_BONUS = checker
 MAIN = main.c
-#FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 CC = gcc
 
 PRINT_DIR = ft_printf

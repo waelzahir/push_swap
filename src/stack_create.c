@@ -29,7 +29,6 @@ t_node  *forward_increment(t_node   *node, int times)
 }
 void    circular_connect(t_node *mem, t_node    *node, int len)
 {
-    t_node  *temp;
     int i;
 
     i = 0;

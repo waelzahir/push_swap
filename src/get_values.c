@@ -34,6 +34,28 @@ int *check_dup(int *array, int len)
     return (array);
 }
 
+int *is_sorted(int  *array, int len)
+{
+    int i;
+    int j;
+
+    i = 1;
+    j = 0;
+    while (array[i] > array[j] && i <= len)
+    {
+        i++;
+        j++;
+    }
+    if (i == len +1)
+    {
+            ft_printf("Error\n");
+            ft_bzero(array, (len + 1) * 4);
+            free(array);
+            return (NULL);
+    }
+    return  (array);
+}
+
 int *get_values(char    **av, int len)
 {
     int *array;
@@ -48,6 +70,8 @@ int *get_values(char    **av, int len)
         array[i] = ft_atoi(av[i]);
         i++;
     }
+    if (is_sorted(array, i - 1) == 0)
+        return (NULL);
     quicksort(array, 0 ,  i - 1);
     array = check_dup(&array[0], i - 1);
     return (array);
