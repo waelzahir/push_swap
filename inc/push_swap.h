@@ -17,4 +17,6 @@ int *get_values(char    **av, int len);
 void quicksort(int *arr, int low, int high);
 int *check_dup(int *array, int len);
 t_node *array_to_list(char **av);
+t_node   *panic(t_node    *mem);
+void    st_index(t_node *univ, int *array, int len);
 #endif

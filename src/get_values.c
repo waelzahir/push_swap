@@ -49,6 +49,6 @@ int *get_values(char    **av, int len)
         i++;
     }
     quicksort(array, 0 ,  i - 1);
-    array = check_dup(&array[0], i -1);
+    array = check_dup(&array[0], i - 1);
     return (array);
 }

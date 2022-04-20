@@ -1,7 +1,7 @@
 NAME = push_swap
 NAME_BONUS = checker
 MAIN = main.c
-FLAGS = -Wall -Wextra -Werror
+#FLAGS = -Wall -Wextra -Werror
 CC = gcc
 
 PRINT_DIR = ft_printf
@@ -14,7 +14,8 @@ LIBFT = ${LIB_DIR}/libft.a
 PRINTF = ${PRINT_DIR}/libftprintf.a
 
 
-FILES = check_values.c get_values.c quick_sort.c stack_pt1.c
+FILES = check_values.c get_values.c quick_sort.c \
+	stack_create.c error_handle.c push_swap_pt1.c
 SRC = $(addprefix $(SRC_DIR)/, $(FILES))
 OBJ = $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
 
