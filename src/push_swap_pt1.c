@@ -45,9 +45,9 @@ void    push_swap(t_node    *a_tail, int size)
     t_stacks *stacks;
 
     stacks  = init_stacks(a_tail, size);
-    rra(stacks, 0);
-      
-
+    
+    int bit[33];
+    radix_sort(stacks);
 int i = 0;
 while (i != stacks->b_size + 1 )
 {

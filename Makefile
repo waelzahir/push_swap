@@ -17,6 +17,7 @@ PRINTF = ${PRINT_DIR}/libftprintf.a
 FILES = check_values.c get_values.c quick_sort.c \
 	stack_create.c error_handle.c push_swap_pt1.c \
 	moves_pt1.c moves_pt3.c moves_pt2.c moves_add.c \
+	push_swap_pt2.c push_swap_pt3.c
 	
 SRC = $(addprefix $(SRC_DIR)/, $(FILES))
 OBJ = $(addprefix $(OBJ_DIR)/, $(FILES:.c=.o))
