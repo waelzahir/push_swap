@@ -20,10 +20,13 @@ t_node  *forward_increment(t_node   *node, int times)
 
     i = 0;
     temp = node;
+    if (node)
+    {
     while (i < times)
     {
         temp = temp->uni_next;
         i++;
+    }
     }
     return  (temp);
 }
@@ -32,14 +35,14 @@ void    circular_connect(t_node *mem, t_node    *node, int len)
     int i;
 
     i = 0;
-    node->uni_next = mem;
-    mem = mem->uni_next;
-    node = node->uni_next;
+    node->uni_previous = mem;
+    mem = mem->uni_previous;
+    node = node->uni_previous;
     while (len)
     {
-        mem->uni_previous = node;
-        mem = mem->uni_next;
-        node = node->uni_next;
+        mem->uni_next = node;
+        mem = mem->uni_previous;
+        node = node->uni_previous;
         len--;
     }
 
@@ -61,12 +64,12 @@ t_node *array_to_list(char  **av)
         node->num = ft_atoi(av[i]);
          if (av[i + 1] == NULL)
           break ;
-        node->uni_next = malloc(sizeof(t_node));
+        node->uni_previous = malloc(sizeof(t_node));
         if (!node)
             return (panic(mem));
-        node = node->uni_next;
+        node = node->uni_previous;
         i++;
     }
     circular_connect(mem, node, i + 1);
-    return (mem);
+    return (node);
 }

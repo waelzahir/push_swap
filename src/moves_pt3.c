@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   moves_pt3.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ozahir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/17 23:29:20 by ozahir            #+#    #+#             */
-/*   Updated: 2022/04/17 23:29:21 by ozahir           ###   ########.fr       */
+/*   Created: 2022/04/20 23:52:14 by ozahir            #+#    #+#             */
+/*   Updated: 2022/04/20 23:52:15 by ozahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/push_swap.h"
 
-int main (int ac, char  **av)
+#include "../inc/push_swap.h"
+
+void    rrb(t_stacks *stacks, int mode)
 {
-    int *array;
-    t_node  *univ;
-
-    univ = NULL;
-    if (ac >= 2)
+    if (stacks->b_tail &&  stacks->b_size > 0)
+    stacks->b_tail = stacks->b_tail->uni_next;
+    if (mode == 0)
+        ft_printf("rrb\n");
+}
+void    rrr(t_stacks *stacks)
+{
+    if (stacks->a_tail && stacks->a_tail &&
+    stacks->a_size > 0 && stacks->b_size > 0)
     {
-        if (check_values(av + 1) == 0)
-            return (0);
-        array = get_values(av + 1, ac - 1);
-        if (array == NULL)
-            return (0);
-        univ = array_to_list(av + 1);
-        st_index(univ, array, ac -1);
-        push_swap(univ, ac -1);
+        rra(stacks, 1);
+        rrb(stacks, 1);
     }
-      
+    ft_printf("rrr\n");
 }

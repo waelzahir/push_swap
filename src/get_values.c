@@ -22,12 +22,7 @@ int *check_dup(int *array, int len)
     while (i <= len)
     {
         if (array[i] == array[j])
-        {
-            ft_printf("Error\n");
-            ft_bzero(array, (len + 1) * 4);
-            free(array);
-            return (NULL);
-        }
+            return (panic_array(array,len));
         j++;
         i++;
     }
@@ -47,12 +42,7 @@ int *is_sorted(int  *array, int len)
         j++;
     }
     if (i == len +1)
-    {
-            ft_printf("Error\n");
-            ft_bzero(array, (len + 1) * 4);
-            free(array);
-            return (NULL);
-    }
+        return  (panic_array(array, len));
     return  (array);
 }
 
