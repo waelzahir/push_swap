@@ -67,6 +67,7 @@ t_node *array_to_list(char  **av)
         node->uni_previous = malloc(sizeof(t_node));
         if (!node)
             return (panic(mem));
+        
         node = node->uni_previous;
         i++;
     }

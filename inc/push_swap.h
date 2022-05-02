@@ -9,6 +9,7 @@ typedef struct s_node
 {
     struct s_node  *uni_next;
     int num;
+    struct s_node *bigger;
     int index;
     struct s_node  *uni_previous;
 } t_node;

@@ -11,6 +11,18 @@
 /* ************************************************************************** */
 
 #include "inc/push_swap.h"
+void rvereseArray(int arr[], int start, int end)
+{
+    int temp;
+    while (start < end)
+    {
+        temp = arr[start];  
+        arr[start] = arr[end];
+        arr[end] = temp;
+        start++;
+        end--;
+    }  
+}    
 
 int main (int ac, char  **av)
 {
@@ -25,9 +37,10 @@ int main (int ac, char  **av)
         array = get_values(av + 1, ac - 1);
         if (array == NULL)
             return (0);
+        rvereseArray(array, 0, ac -2);
         univ = array_to_list(av + 1);
         st_index(univ, array, ac -1);
-        push_swap(univ, ac -1);
+        push_swap(univ, ac -1 );
     }
-      
+      exit(0);
 }
