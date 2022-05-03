@@ -27,6 +27,7 @@ void    st_index(t_node *univ, int *array, int len)
         temp->index = i;
         i++;
     }
+    free(array);
 }
 t_stacks   *init_stacks(t_node *a_tail, int size)
 {
@@ -65,7 +66,7 @@ void push_half(t_stacks *stacks,int len)
     int i = 0;
     while (i <= len)
     {
-        pb(stacks);
+        pb(stacks, 0);
         i++;
     }
 }
@@ -221,7 +222,7 @@ void push_unsorted(t_stacks *stacks)
         if (temp->bigger != temp->uni_next)
         {
             rra(stacks, 0);
-            pb(stacks);
+            pb(stacks, 0);
         }
         else 
             rra(stacks, 0);
@@ -246,7 +247,7 @@ void    sort_rest(t_stacks *stacks)
             drb(stacks, stacks->b_size - b );
         else
             drrb(stacks, b + 1);
-        pa(stacks);
+        pa(stacks, 0);
 
 
     }
@@ -263,7 +264,19 @@ void self_sort(t_stacks *stacks)
     sort_rest(stacks);
 
 }
+void    exit_func(t_stacks *stacks)
+{
+    t_node *temp;
 
+    temp = stacks->a_tail;
+    while (stacks->a_size != -1)
+    {
+        temp = stacks->a_tail->uni_next;
+        free(temp);
+        stacks->a_size--;
+    }
+    free(stacks);
+}
 void    push_swap(t_node    *a_tail, int size)
 {
     t_stacks *stacks;
@@ -271,10 +284,12 @@ void    push_swap(t_node    *a_tail, int size)
     temp = a_tail;
 
     stacks  = init_stacks(a_tail, size);
-    link_to_big(temp,stacks->a_size);
-     self_sort(stacks);
-    
+        link_to_big(temp,stacks->a_size);
 
+    self_sort(stacks);
+   
+
+    
 
 
 }

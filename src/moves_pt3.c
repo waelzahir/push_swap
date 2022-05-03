@@ -20,7 +20,7 @@ void    rrb(t_stacks *stacks, int mode)
     if (mode == 0)
         ft_printf("rrb\n");
 }
-void    rrr(t_stacks *stacks)
+void    rrr(t_stacks *stacks, int sig)
 {
     if (stacks->a_tail && stacks->a_tail &&
     stacks->a_size > 0 && stacks->b_size > 0)
@@ -28,5 +28,6 @@ void    rrr(t_stacks *stacks)
         rra(stacks, 1);
         rrb(stacks, 1);
     }
+    if (sig == 0)
     ft_printf("rrr\n");
 }

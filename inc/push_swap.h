@@ -2,6 +2,7 @@
 # define PUSH_SWAP_H
 
 #include <stdlib.h>
+#include "get_next_line.h"
 #include "../libft/libft.h"
 #include "../ft_printf/ft_printf.h"
 
@@ -38,20 +39,26 @@ void    reint(t_stacks *stacks, int state);
 void swap(int* a, int* b);
 void    sa(t_stacks *stacks, int sig);
 void    sb(t_stacks *stacks, int sig);
-void    ss(t_stacks *stacks);
+void    ss(t_stacks *stacks, int sig);
 
-void    pb(t_stacks *stacks);
-void    pa(t_stacks *stacks);
+void    pb(t_stacks *stacks, int sig);
+void    pa(t_stacks *stacks, int sig);
 t_node *init_push(t_node *node);
 void    add_node(t_node *tail, int size, t_node *node);
 t_node  *delete_node(t_node *tail, int size);
 void    ra(t_stacks *stacks, int mode);
 void    rb(t_stacks *stacks, int mode);
-void    rr(t_stacks *stacks);
+void    rr(t_stacks *stacks, int sig);
 void    rra(t_stacks *stacks, int mode);
 void    rrb(t_stacks *stacks, int mode);
-void    rrr(t_stacks *stacks);
+void    rrr(t_stacks *stacks, int sig);
 void get_seq(int *bits);
 void    radix_sort(t_stacks *stacks);
+ void mini_sort(t_stacks *stack);
+void    ftprints(t_stacks *stacks);
+t_stacks   *init_stacks(t_node *a_tail, int size);
+int sorted(t_node *head, int times);
+void    link_to_big(t_node *tail, int size);
+
 
 #endif

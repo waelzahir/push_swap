@@ -14,7 +14,7 @@
 #include "../inc/push_swap.h"
 
 
-void    pa(t_stacks *stacks)
+void    pa(t_stacks *stacks, int sig)
 {
     t_node  *node;
 
@@ -29,6 +29,7 @@ void    pa(t_stacks *stacks)
             else
             add_node(stacks->a_tail, stacks->a_size, node);
         stacks->a_size++;
+        if (sig == 0)
         ft_printf("pa\n");
     }
 }
@@ -46,7 +47,7 @@ void    rb(t_stacks *stacks, int mode)
     if (mode == 0)
         ft_printf("rb\n");
 }
-void    rr(t_stacks *stacks)
+void    rr(t_stacks *stacks, int sig)
 {
     if (stacks->a_tail && stacks->a_tail &&
     stacks->a_size > 0 && stacks->b_size > 0)
@@ -54,6 +55,7 @@ void    rr(t_stacks *stacks)
         ra(stacks, 1);
         rb(stacks, 1);
     }
+    if (sig == 0)
     ft_printf("rr\n");
 }
 void    rra(t_stacks *stacks, int mode)

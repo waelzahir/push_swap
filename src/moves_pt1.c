@@ -39,18 +39,19 @@ void    sb(t_stacks *stacks, int sig)
         }
 }
 
-void    ss(t_stacks *stacks)
+void    ss(t_stacks *stacks,  int sig)
 {
     if (stacks->a_size > 0 && stacks->b_size > 0)
     {
         sa(stacks, 1);
     sb(stacks, 1);
 
+    if (sig == 0)
     ft_printf("ss\n");
     }
 }
 
-void    pb(t_stacks *stacks)
+void    pb(t_stacks *stacks, int sig)
 {
     t_node  *node;
 
@@ -65,7 +66,8 @@ void    pb(t_stacks *stacks)
             else
             add_node(stacks->b_tail, stacks->b_size, node);
         stacks->b_size++;
-        ft_printf("pb\n");
+        if (sig == 0)
+            ft_printf("pb\n");
 
     }
 }
