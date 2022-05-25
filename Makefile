@@ -18,7 +18,7 @@ HEADER = inc/push_swap.h
 SRC_DIR = src
 OBJ_DIR = obj
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 NAME = push_swap
 MAIN = main.c

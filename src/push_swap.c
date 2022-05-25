@@ -75,12 +75,15 @@ int bool_count(t_stack *stack, int times)
 	}
 	return count;
 }
+
 int flaged_to_b(t_stacks *stacks, int *array, int piv)
 {
 	int count;
 	int i;
 	t_stack	*temp;
+	int	rotate;
 
+	rotate = 0;
 	count = bool_count(stacks->a_tail, stacks->a_size);
 	i = 0;
 	while (i != count)
@@ -98,7 +101,7 @@ int flaged_to_b(t_stacks *stacks, int *array, int piv)
 				i++;
 			}
 			else
-			ra(stacks, 0);
+				ra(stacks, 0);
 	}
 	return	(count);
 }
@@ -181,5 +184,4 @@ void	push_swap(t_stacks *stacks,	int	*array)
 		flush_bools(stacks);
 	}
 	reverse_push(stacks);
-
 }
