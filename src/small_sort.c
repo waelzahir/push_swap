@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves_3.c                                          :+:      :+:    :+:   */
+/*   small_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ozahir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/24 18:15:39 by ozahir            #+#    #+#             */
-/*   Updated: 2022/05/25 22:57:32 by ozahir           ###   ########.fr       */
+/*   Created: 2022/05/25 22:33:39 by ozahir            #+#    #+#             */
+/*   Updated: 2022/05/25 22:36:47 by ozahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void	rrr(t_stacks *stacks, int sig)
+void	five_sort(t_stacks *stacks)
 {
-	if (stacks->a_tail && stacks->a_tail
-		&& stacks->a_size > 0 && stacks->b_size > 0)
+	push_smallest(stacks);
+	three_sort(stacks);
+	pa(stacks, 0);
+	pa(stacks, 0);
+}
+
+void	three_sort(t_stacks *stack)
+{
+	t_stack	*tail;
+
+	tail = stack->a_tail->previous;
+	if (tail->num > tail->previous->num)
+		sa(stack, 0);
+	tail = stack->a_tail->previous;
+	if (tail->next->num < tail->previous->num)
 	{
-		rra(stacks, 1);
-		rrb(stacks, 1);
+		rra(stack, 0);
+		if (tail->next->num > tail->num)
+			sa(stack, 0);
 	}
-	if (sig == 0)
-		ft_printf("rrr\n");
 }

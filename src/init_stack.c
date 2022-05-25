@@ -6,18 +6,18 @@
 /*   By: ozahir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 00:38:02 by ozahir            #+#    #+#             */
-/*   Updated: 2022/05/24 00:38:04 by ozahir           ###   ########.fr       */
+/*   Updated: 2022/05/25 23:18:34 by ozahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-static void    circular_connect(t_stack *mem, t_stack *node, int len)
+static	void	circular_connect(t_stack *mem, t_stack *node, int len)
 {
-	int i;
+	int	i;
 
 	i = 0;
-    node->previous = mem;
+	node->previous = mem;
 	mem = mem->previous;
 	node = node->previous;
 	while (len)
@@ -28,11 +28,12 @@ static void    circular_connect(t_stack *mem, t_stack *node, int len)
 		len--;
 	}
 }
+
 t_stack	*convert_array(char **av, int *array)
 {
-	t_stack *node;
-	t_stack *mem;
-	int i;
+	t_stack	*node;
+	t_stack	*mem;
+	int		i;
 
 	i = 0;
 	node = malloc(sizeof(t_stack));
@@ -54,16 +55,16 @@ t_stack	*convert_array(char **av, int *array)
 	return (node);
 }
 
-t_stacks   *init_stacks(t_stack *stack_a, int size)
+t_stacks	*init_stacks(t_stack *stack_a, int size)
 {
-    t_stacks *stacks;
+	t_stacks	*stacks;
 
-    stacks = malloc(sizeof(t_stacks));
+	stacks = malloc(sizeof(t_stacks));
 	if (!stacks)
 		return (panic(stack_a, NULL), NULL);
-    stacks->a_tail = stack_a;
-    stacks->b_tail = NULL;
-    stacks->a_size = size - 1;
-    stacks->b_size = - 1;
-    return (stacks);
+	stacks->a_tail = stack_a;
+	stacks->b_tail = NULL;
+	stacks->a_size = size - 1;
+	stacks->b_size = -1;
+	return (stacks);
 }

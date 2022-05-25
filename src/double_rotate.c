@@ -1,25 +1,61 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves_3.c                                          :+:      :+:    :+:   */
+/*   double_rotate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ozahir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/24 18:15:39 by ozahir            #+#    #+#             */
-/*   Updated: 2022/05/25 22:57:32 by ozahir           ###   ########.fr       */
+/*   Created: 2022/05/25 22:25:58 by ozahir            #+#    #+#             */
+/*   Updated: 2022/05/25 22:29:47 by ozahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void	rrr(t_stacks *stacks, int sig)
+void	dra(t_stacks *stacks, int times)
 {
-	if (stacks->a_tail && stacks->a_tail
-		&& stacks->a_size > 0 && stacks->b_size > 0)
+	int	i;
+
+	i = 0;
+	while (i < times)
 	{
-		rra(stacks, 1);
-		rrb(stacks, 1);
+		ra(stacks, 0);
+		i++;
 	}
-	if (sig == 0)
-		ft_printf("rrr\n");
+}
+
+void	drra(t_stacks *stacks, int times)
+{
+	int	i;
+
+	i = 0;
+	while (i < times)
+	{
+		rra(stacks, 0);
+		i++;
+	}
+}
+
+void	drb(t_stacks *stacks, int times)
+{
+	int	i;
+
+	i = 0;
+	while (i < times)
+	{
+		rb(stacks, 0);
+		i++;
+	}
+}
+
+void	drrb(t_stacks *stacks, int times)
+{
+	int	i;
+
+	i = 0;
+	while (i < times)
+	{
+		rrb(stacks, 0);
+		i++;
+	}
 }

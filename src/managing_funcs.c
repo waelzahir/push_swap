@@ -6,15 +6,15 @@
 /*   By: ozahir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 21:54:39 by ozahir            #+#    #+#             */
-/*   Updated: 2022/05/23 21:54:43 by ozahir           ###   ########.fr       */
+/*   Updated: 2022/05/25 23:21:30 by ozahir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-int	twd_len(char	**args)
+int	twd_len(char **args)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (args[i])
@@ -23,6 +23,7 @@ int	twd_len(char	**args)
 	}
 	return (i);
 }
+
 void	d_free(char	**args)
 {
 	int	i;
@@ -37,7 +38,7 @@ void	d_free(char	**args)
 	args = NULL;
 }
 
-int *arr_panic(int *array, int len, int mode)
+int	*arr_panic(int *array, int len, int mode)
 {
 	if (mode == 1)
 		ft_printf("Error\n");
@@ -46,19 +47,19 @@ int *arr_panic(int *array, int len, int mode)
 	return (NULL);
 }
 
-t_stack *panic(t_stack    *mem, int *array)
+t_stack	*panic(t_stack *mem, int *array)
 {
-    t_stack  *temp;
+	t_stack	*temp;
 
-    temp = mem;
-    while (mem)
-    {
-        mem = mem->next;
-        free(temp);
-        temp = NULL;
-        temp = mem;
-    }
+	temp = mem;
+	while (mem)
+	{
+		mem = mem->next;
+		free(temp);
+		temp = NULL;
+		temp = mem;
+	}
 	if (array)
 		free(array);
-    return (NULL);
+	return (NULL);
 }
