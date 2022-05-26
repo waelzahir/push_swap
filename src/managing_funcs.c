@@ -47,19 +47,36 @@ int	*arr_panic(int *array, int len, int mode)
 	return (NULL);
 }
 
-t_stack	*panic(t_stack *mem, int *array)
+void	st_free(t_stacks	*stacks)
 {
-	t_stack	*temp;
+	int	i;
+	t_stack *temp;
+	t_stack	*mem;
 
-	temp = mem;
-	while (mem)
+	i = 0;
+	mem = stacks->a_tail;
+	while (i < stacks->a_size + 1)
 	{
-		mem = mem->next;
-		free(temp);
-		temp = NULL;
-		temp = mem;
+		temp = mem->next;
+		free(mem);
+		mem = temp;
+		i++;
 	}
-	if (array)
-		free(array);
-	return (NULL);
+	free(stacks);
 }
+void	free_struct(t_stack	*mem, int	i,	int	*array)
+{
+	int j;
+	t_stack *temp;
+
+	j = 0;
+	while (j < i)
+	{
+		temp = mem->next;
+		free(mem);
+		mem = temp;
+		j++;
+	}
+	free(array);
+}
+

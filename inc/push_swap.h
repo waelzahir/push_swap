@@ -54,6 +54,7 @@ void	rr(t_stacks *stacks, int sig);
 void	rra(t_stacks *stacks, int mode);
 void	rrb(t_stacks *stacks, int mode);
 void	rrr(t_stacks *stacks, int sig);
+
 void	dra(t_stacks *stacks, int times);
 void	drra(t_stacks *stacks, int times);
 void	drb(t_stacks *stacks, int times);
@@ -74,7 +75,7 @@ int	check_vals(char **av);
 int	*get_vals(char **av, int len);
 void	indexing_func(t_stack *stack_a, int *array, int len);
 t_stack	*convert_array(char **av, int *array);
-t_stacks	*init_stacks(t_stack *stack_a, int size);
+t_stacks	*init_stacks(t_stack *stack_a, int size, int *array);
 int	twd_len(char **args);
 void	d_free(char	**args);
 int	*arr_panic(int *array, int len, int mode);
@@ -88,6 +89,8 @@ void	five_sort(t_stacks *stacks);
 void	three_sort(t_stacks *stack);
 void	rotate_b(t_stacks *stacks, int index);
 void	rotate_a(t_stacks *stacks, int i);
+void	free_struct(t_stack	*mem, int	i,	int	*array);
+void	st_free(t_stacks	*stacks);
 
 
 

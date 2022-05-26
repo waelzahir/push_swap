@@ -125,4 +125,6 @@ void	push_swap(t_stacks *stacks, int *array)
 		}
 		reverse_push(stacks);
 	}
+	free(array);
+	st_free(stacks);
 }

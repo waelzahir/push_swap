@@ -39,7 +39,7 @@ t_stack	*convert_array(char **av, int *array)
 	node = malloc(sizeof(t_stack));
 	mem = node;
 	if (!node)
-		return (panic(mem, array));
+		return (free(array), NULL);
 	while (av[i])
 	{
 		node->num = ft_atoi(av[i]);
@@ -47,7 +47,7 @@ t_stack	*convert_array(char **av, int *array)
 			break ;
 		node->previous = malloc(sizeof(t_stack));
 		if (!node)
-			return (panic(mem, array));
+			return (free_struct(mem, i,array), NULL);
 		node = node->previous;
 		i++;
 	}
@@ -55,13 +55,13 @@ t_stack	*convert_array(char **av, int *array)
 	return (node);
 }
 
-t_stacks	*init_stacks(t_stack *stack_a, int size)
+t_stacks	*init_stacks(t_stack *stack_a, int size, int *array)
 {
 	t_stacks	*stacks;
 
 	stacks = malloc(sizeof(t_stacks));
 	if (!stacks)
-		return (panic(stack_a, NULL), NULL);
+		return (free_struct(stack_a, size ,array), NULL);
 	stacks->a_tail = stack_a;
 	stacks->b_tail = NULL;
 	stacks->a_size = size - 1;

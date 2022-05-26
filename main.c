@@ -34,7 +34,7 @@ void	special_func(char	**arg_list, int given_l)
 	if	(stack_a == NULL)
 		return ;
 	indexing_func(stack_a, array, len);
-	stacks = init_stacks(stack_a, len);
+	stacks = init_stacks(stack_a, len, array);
 	if	(!stacks)
 		return (free(array));
 	push_swap(stacks, array);
